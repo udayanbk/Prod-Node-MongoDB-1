@@ -1,1 +1,1 @@
-console.log("hello from Server .TS")
+console.log('hello "from" Server .TS')
