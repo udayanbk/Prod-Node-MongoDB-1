@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@types/node": "^22.14.0",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
@@ -19,6 +21,8 @@
   },
   "dependencies": {
     "husky": "^9.1.7",
-    "lint-staged": "^15.5.0"
+    "i": "^0.3.7",
+    "lint-staged": "^15.5.0",
+    "npm": "^11.2.0"
   }
 }
