@@ -1,3 +1,3 @@
 console.log(
-  "Testing Hisky"
+  "Testing Husky"
 )
