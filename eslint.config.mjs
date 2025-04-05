@@ -24,7 +24,7 @@ export default tseslint.config({
     eslintCongfigPrettier
   ],
   rules: {
-    "no-console": "error",
+    // "no-console": "error",
     quotes: ["error", "single", {allowTemplateLiterals: true}],
   },
 });

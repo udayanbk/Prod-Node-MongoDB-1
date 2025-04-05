@@ -4,12 +4,12 @@
   "description": "Prod Node MongoDB - 1",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon src/server.ts",
     "dist": "npx tsc",
-    "start": "nodemon dist/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/server.ts",
+    "start": "cross-env NODE_ENV=production node dist/server.js",
     "prepare": "husky",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format:check": "prettier . --check",
     "format:fix": "prettier . --fix"
   },
@@ -17,6 +17,7 @@
   "license": "ISC",
   "lint-staged": {
     "*.ts": [
+      "npm run lint:fix",
       "npm run format:fix"
     ]
   },
