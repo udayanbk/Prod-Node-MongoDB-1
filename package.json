@@ -4,14 +4,18 @@
   "description": "Prod Node MongoDB - 1",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "prepare": "husky",
-    "test": "node test.js"
+    "dev": "nodemon src/index.ts",
+    "dist": "npx tsc",
+    "start": "nodemon dist/index.js",
+    "prepare": "husky"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "@types/node": "^22.14.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "husky": "^9.1.7",
