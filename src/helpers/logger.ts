@@ -1,10 +1,12 @@
 import {createLogger, format, transports} from 'winston';
 import { ConsoleTransportInstance, FileTransportInstance } from 'winston/lib/winston/transports';
 import util from "util";
+import "winston-mongodb";
 import config from '../config/config';
 import path from 'path';
 import * as sourceMapSupport from "source-map-support";
 import { blue, green, magenta, red, yellow } from 'colorette';
+import { MongoDBTransportInstance } from 'winston-mongodb';
 
 sourceMapSupport.install()
 
@@ -88,6 +90,21 @@ const fileTransport = ():Array<FileTransportInstance> =>{
   ]
 }
 
+const mongoDBTransport = ():Array<MongoDBTransportInstance> =>{
+  return [
+    new transports.MongoDB({
+      level: 'info',
+      db: config.DB_URL as string,
+      metaKey: "meta",
+      expireAfterSeconds: 3600 * 24 * 30,
+      collection: "application-logs",
+      // options: {
+      //   useUnifiedTopology: true
+      // }
+    })
+  ]
+}
+
 export default createLogger ({
   defaultMeta: {
     meta: {}
@@ -96,6 +113,7 @@ export default createLogger ({
   // response ----------> file transport, database transport, console transport
   transports: [
     ...consoleTransport(),
-    ...fileTransport()
+    ...fileTransport(),
+    ...mongoDBTransport()
   ]
 })
